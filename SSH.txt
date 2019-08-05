@@ -1,0 +1,47 @@
+Генерація ключа
+1. ssh-keygen -t rsa -C "your@email.com"
+
+2. На питання "Enter file in which to save the key" введіть id_rsa і натисніть "Enter".
+
+3. На прохання ввести пароль Ви можете його створити або не вводити зовсім - просто натискаєте два рази Enter (у другому випадку це спростить Вашу роботу у подальшому, оскільки відпадає необхідність постійного підтвердження).
+
+4. Переходите у папку C:\Users\UserName\.ssh (Windows) або ~/.ssh (Linux або Mac).
+
+5. Відкриваєте файл id_rsa.pub і копіюєте його вміст.
+
+6. Відкрийте сторінку налаштувань Вашого облікового запису github https://github.com/account.
+
+7. Вибираєте у випадаючому списку у правому верхньому куті властивість Settings та переходите SSH and GPG keys.
+
+8. Створюєте новий SSH key.
+
+9. Вставляєте у відповідне поле уміст файла id_rsa.pub. Зберігаєте дані.
+
+10. Створюєте у папці .ssh файл config з таким умістом, але без знаків решітки.
+
+###############
+
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+
+############## 
+
+11. Перевіряєте роботу ключа ssh git@github.com.
+Має відповісти наступним чином
+Hi <User>! You've successfully authenticated, but GitHub does not provide shell access.
+Connection to ssh.github.com closed.
+Якщо таке повідомлення є, то все пройшло правильно.
+
+12. Можете завантажувати Ваш репозиторій на github.
+git push origin master
+
+Може виникати помилка
+
+ssh: Could not resolve hostname ssh: Name or service not known
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+Це або щось брандамаером, або із мережею, або слід оновити посилання до зовнішнього репозиторію.
